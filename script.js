@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Массив с именами файлов фотографий в папке images
     // Замените на реальные имена ваших файлов
     const photoFilenames = [
-        'photo1.jpg',
+        'images/your-background-photo.jpg',
         'photo2.jpg',
         'photo3.jpg',
         'photo4.jpg',
