@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Массив с именами файлов фотографий
     const photoFilenames = [
-        'photo1.jpg',
+        'images/Su33.png',
         'photo2.jpg',
         'photo3.jpg',
         'photo4.jpg',
