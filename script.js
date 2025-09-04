@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Замените на реальные имена ваших файлов
     const photoFilenames = [
         'images/your-background-photo.jpg',
-        'photo2.jpg',
+        'images/Su33.png',
         'photo3.jpg',
         'photo4.jpg',
         'photo5.jpg',
