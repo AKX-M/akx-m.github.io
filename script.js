@@ -2,49 +2,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const gallery = document.getElementById('gallery');
     const loading = document.getElementById('loading');
     
-    // Массив с именами файлов фотографий в папке images
-    // Замените на реальные имена ваших файлов
+    // Массив с именами файлов фотографий
     const photoFilenames = [
-        'images/your-background-photo.jpg',
-        'images/Su33.png',
+        'photo1.jpg',
+        'photo2.jpg',
         'photo3.jpg',
         'photo4.jpg',
         'photo5.jpg',
-        // Добавьте больше фотографий по необходимости
+        // Добавьте больше фотографий
     ];
     
     // Функция для загрузки фотографий
     function loadPhotos() {
         loading.style.display = 'block';
-        
-        // Очищаем галерею перед загрузкой новых фото
         gallery.innerHTML = '';
         
-        // Создаем элементы изображений
-        photoFilenames.forEach(filename => {
+        let loadedCount = 0;
+        const totalPhotos = photoFilenames.length;
+        
+        photoFilenames.forEach((filename, index) => {
             const imgContainer = document.createElement('div');
             imgContainer.className = 'photo-container';
             
             const img = document.createElement('img');
             img.src = `images/${filename}`;
-            img.alt = 'Фотография из галереи';
-            img.loading = 'lazy'; // Ленивая загрузка для оптимизации
+            img.alt = `Фотография ${index + 1}`;
+            img.loading = 'lazy';
+            
+            img.onload = function() {
+                loadedCount++;
+                if (loadedCount === totalPhotos) {
+                    loading.style.display = 'none';
+                }
+            };
             
             imgContainer.appendChild(img);
             gallery.appendChild(imgContainer);
         });
         
-        loading.style.display = 'none';
+        // На случай если какие-то фото не загрузятся
+        setTimeout(() => {
+            loading.style.display = 'none';
+        }, 5000);
     }
     
-    // Инициализация загрузки фотографий
+    // Загрузка фотографий
     loadPhotos();
-    
-    // Обработчик для бесконечной прокрутки (если нужно)
-    window.addEventListener('scroll', function() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
-            // Здесь можно добавить логику подгрузки дополнительных фото
-            // при достижении низа страницы
-        }
-    });
 });
