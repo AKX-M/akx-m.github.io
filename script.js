@@ -10,7 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
         'Su33_Mig31.png',
         'Su33_Mig31_1.png',
         'Su33_Mig31_2.png',
-        'Mig23mld_Mig21smt.png'
+        'Mig23mld_Mig21smt.png',
+        'MiG-23-preview.jpg',
+        'MiG-23.jpg',
+        'Su-25-preview.jpg',
+        'Su-25.jpg',
+        'T-4-preview.jpg',
+        'T-4.jpg'
         // Добавьте больше фотографий
     ];
     
