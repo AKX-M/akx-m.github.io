@@ -5,11 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Массив с именами файлов фотографий
     const photoFilenames = [
         'Su33.png',
-        'Spyral.png',
-        'Spyral_s.png',
-        'Su33_Mig31.png',
-        'Su33_Mig31_1.png',
-        'Su33_Mig31_2.png',
         'Mig23mld_Mig21smt.png',
         'MiG-23-preview.jpg',
         'MiG-23.jpg',
