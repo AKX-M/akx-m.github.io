@@ -4,15 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Массив с именами файлов фотографий
     const photoFilenames = [
-        'Su33.png',
-        'Mig23mld_Mig21smt.png',
         'MiG-23-preview.jpg',
         'MiG-23.jpg',
         'Su-25-preview.jpg',
         'Su-25.jpg',
+        '279.jpg',
+        'MiG-25PD.jpg',
+        'MiG-25PD-full.jpg',
+        'MiG-25PD-full-m.jpg',
         'T-4-preview.jpg',
-        'T-4.jpg'
-        // Добавьте больше фотографий
+        'T-4.jpg',
+        'Su-33.jpg'
     ];
     
     // Функция для загрузки фотографий
@@ -31,6 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
             img.src = `images/${filename}`;
             img.alt = `Фотография ${index + 1}`;
             img.loading = 'lazy';
+            
+            // ПРОСТОЕ РЕШЕНИЕ: при клике открыть фото в новой вкладке
+            img.onclick = function() {
+                window.open(`images/${filename}`, '_blank');
+            };
+            
+            // Добавляем курсор-указатель, чтобы было понятно, что можно нажать
+            img.style.cursor = 'pointer';
             
             img.onload = function() {
                 loadedCount++;
