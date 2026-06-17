@@ -163,9 +163,6 @@
 .image-wrap img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    display: block;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .image-wrap .caption {
