@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('poems-container');
+    const container = document.getElementById('lines-container');
     
     // МАССИВ СО СТИХАМИ - ДОБАВЛЯЙ СВОИ СТИХИ СЮДА
-    const poems = [
+    const lines = [
         {
             title: "«За Великую Россию»",
             date: "Март 2026",
@@ -26,28 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: "«Дорога прямо в ад»",
             date: "Октябрь 2024",
-            text: "Конец декабря…\nХолодного… Грязного…\nПоследний листочек календаря\nУходящего… 94-го…\n\nНесмолкаемый коробочек шум\nСтавит боевую задачу комбриг\nГотовится новогодний штурм\nХод мыслей остановился на миг\n\nСтрах пробежал по холодному телу\nЗастывшим оскалом тяну сигарету\nСкоро погрузка и команда вперёд\nПоследняя за крайней минута идёт\n\nНу что, брат? Пора!\nНа бэтэр полезла в бушлатах братва\n70сятых годов пацаны\nСвою юность кладут за интересы страны\n\nЕсть и бывалые средь нас\nВсе мысли прочь, нам дан приказ\nМёртвой рукой цевьё сжимает старый контрабас\nДорога прямо в ад: Грозный, Чечня, Кавказ…"
+            text: "Конец декабря…\nХолодного… Грязного…\nПоследний листочек календаря\nУходящего… 94-го…\n\nНесмолкаемый коробочек шум\nСтавит боевую задачу комбриг\nГотовится новогодний штурм\nХод мыслей остановился на миг\n\nСтрах пробежал по холодному телу\nЗастывшим оскалом тяну сигарету\nСкоро погрузка и команда вперёд\nПоследняя за крайней минута идёт\n\nНу что, брат? Пора!\nНа бэтэр полезла в бушлатах братва\n70–х годов пацаны\nСвою юность кладут за интересы страны\n\nЕсть и бывалые средь нас\nВсе мысли прочь, нам дан приказ\nМёртвой рукой цевьё сжимает старый контрабас\nДорога прямо в ад: Грозный, Чечня, Кавказ…"
         }
     ];
     
     // Функция для отображения стихов
-    function displayPoems() {
+    function displaylines() {
         container.innerHTML = '';
         
-        poems.forEach(poem => {
-            const poemCard = document.createElement('div');
-            poemCard.className = 'poem-card';
+        lines.forEach(line => {
+            const lineCard = document.createElement('div');
+            lineCard.className = 'line-card';
             
-            poemCard.innerHTML = `
-                <h2 class="poem-title">${poem.title}</h2>
-                <div class="poem-date">${poem.date}</div>
-                <div class="poem-text">${poem.text}</div>
+            lineCard.innerHTML = `
+                <h2 class="line-title">${line.title}</h2>
+                <div class="line-date">${line.date}</div>
+                <div class="line-text">${line.text}</div>
             `;
             
-            container.appendChild(poemCard);
+            container.appendChild(lineCard);
         });
     }
     
     // Показываем стихи
-    displayPoems();
+    displaylines();
 });

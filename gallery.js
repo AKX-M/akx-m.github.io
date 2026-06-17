@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const gallery = document.getElementById('gallery');
-    const loading = document.getElementById('loading');
     
     // Массив с именами файлов фотографий
     const photoFilenames = [
@@ -19,10 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Функция для загрузки фотографий
     function loadPhotos() {
-        loading.style.display = 'block';
         gallery.innerHTML = '';
         
-        let loadedCount = 0;
         const totalPhotos = photoFilenames.length;
         
         photoFilenames.forEach((filename, index) => {
@@ -32,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = document.createElement('img');
             img.src = `images/${filename}`;
             img.alt = `Фотография ${index + 1}`;
-            img.loading = 'lazy';
             
             // ПРОСТОЕ РЕШЕНИЕ: при клике открыть фото в новой вкладке
             img.onclick = function() {
@@ -42,21 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Добавляем курсор-указатель, чтобы было понятно, что можно нажать
             img.style.cursor = 'pointer';
             
-            img.onload = function() {
-                loadedCount++;
-                if (loadedCount === totalPhotos) {
-                    loading.style.display = 'none';
-                }
-            };
             
             imgContainer.appendChild(img);
             gallery.appendChild(imgContainer);
         });
         
-        // На случай если какие-то фото не загрузятся
-        setTimeout(() => {
-            loading.style.display = 'none';
-        }, 5000);
     }
     
     // Загрузка фотографий

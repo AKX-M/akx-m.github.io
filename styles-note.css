@@ -1,0 +1,215 @@
+/* Импортируем общие стили */
+@import url('styles.css');
+
+.notes-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.note-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 40px;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Стили для Markdown контента */
+.note-text {
+    font-size: 1.2rem;
+    color: rgba(0, 32, 70, 1.0);
+    line-height: 1.8;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Заголовки в Markdown */
+.note-text h1 {
+    font-size: 2.2rem;
+    margin: 1.5rem 0 0.5rem 0;
+    color: rgba(0, 32, 70, 1.0);
+    font-family: 'Caveat', cursive;
+}
+
+.note-text h2 {
+    font-size: 1.8rem;
+    margin: 1.2rem 0 0.5rem 0;
+    color: rgba(0, 32, 70, 1.0);
+    font-family: 'Caveat', cursive;
+}
+
+.note-text h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0 0.5rem 0;
+    color: rgba(0, 32, 70, 1.0);
+    font-family: 'Caveat', cursive;
+}
+
+/* Параграфы */
+.note-text p {
+    margin: 0.8rem 0;
+}
+
+/* Списки */
+.note-text ul, .note-text ol {
+    margin: 0.8rem 0;
+    padding-left: 2rem;
+}
+
+.note-text li {
+    margin: 0.3rem 0;
+}
+
+/* Цитаты */
+.note-text blockquote {
+    border-left: 4px solid rgba(0, 32, 70, 0.3);
+    margin: 1rem 0;
+    padding: 0.5rem 1.5rem;
+    background-color: rgba(0, 32, 70, 0.05);
+    font-style: italic;
+}
+
+/* Код */
+.note-text code {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.note-text pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.note-text pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Таблицы */
+.note-text table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.note-text th, .note-text td {
+    border: 1px solid rgba(0, 32, 70, 0.2);
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.note-text th {
+    background-color: rgba(0, 32, 70, 0.1);
+}
+
+/* Изображения */
+.note-text img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1rem 0;
+    display: block;
+}
+
+/* Ссылки */
+.note-text a {
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom: 1px dotted #0066cc;
+}
+
+.note-text a:hover {
+    border-bottom: 1px solid #0066cc;
+}
+
+/* MathJax формулы */
+.note-text .math {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* Горизонтальная линия */
+.note-text hr {
+    border: none;
+    border-top: 2px solid rgba(0, 32, 70, 0.2);
+    margin: 2rem 0;
+}
+
+/* Стили для поэтического текста (если хотите сохранить ручной перенос) */
+.note-text .note-lines {
+    white-space: pre-line;
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+/* Обертка для изображений с обтеканием */
+.image-wrap {
+    margin: 0.5rem 1rem 0.5rem 0;
+    max-width: 40%;
+    float: left;
+}
+
+.image-wrap.image-right {
+    float: right;
+    margin: 0.5rem 0 0.5rem 1rem;
+}
+
+.image-wrap img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrap .caption {
+    font-size: 0.85rem;
+    color: rgba(0, 32, 70, 0.7);
+    text-align: center;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+/* Очистка обтекания после изображений */
+.clearfix {
+    clear: both;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .image-wrap {
+        float: none;
+        max-width: 100%;
+        margin: 1rem 0;
+        text-align: center;
+    }
+    
+    .image-wrap img {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .note-card {
+        padding: 20px;
+    }
+    
+    .note-text {
+        font-size: 1rem;
+    }
+    
+    .note-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .note-text h2 {
+        font-size: 1.5rem;
+    }
+}

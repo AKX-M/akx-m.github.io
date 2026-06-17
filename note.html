@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Записи АКХ</title>
+    <meta name="description" content="Записи АКХ">
+    <link rel="stylesheet" href="styles-note.css">
+    <!-- Подключаем Highlight.js для подсветки кода -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <!-- Подключаем MathJax для формул -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Записи АКХ</h1>
+            <nav>
+                <a href="index.html">АКХ</a>
+                <a href="gallery.html">Зарисовки АКХ</a>
+                <a href="line.html">Строчки АКХ</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="notes-container" id="notes-container">
+            <!-- Стихи будут загружаться сюда -->
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2026 АКХ</p>
+    </footer>
+    
+    <!-- Подключаем marked.js для парсинга Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="note.js"></script>
+</body>
+</html>
