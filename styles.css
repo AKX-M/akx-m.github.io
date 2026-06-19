@@ -37,7 +37,6 @@ header {
     color: white;
     text-align: center;
     padding: 2rem 0;
-    border-bottom: 2px solid rgba(0, 32, 70, 1.0);
 }
 
 h1 {
@@ -76,5 +75,146 @@ footer {
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
+    }
+}
+
+
+/* ====== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ====== */
+
+/* Планшеты и телефоны */
+@media (max-width: 768px) {
+    /* Уменьшаем заголовок */
+    h1 {
+        font-size: 1.8rem !important;
+    }
+
+    /* Уплотняем навигацию */
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
+        margin: 0 0.3rem !important;
+        border-radius: 4px;
+        white-space: nowrap;
+    }
+
+    /* Уменьшаем отступы в header */
+    header {
+        padding: 1.2rem 0 !important;
+    }
+
+    /* Уменьшаем контейнер гифки */
+    .gif-container {
+        max-width: 70%;
+        margin: 1.5rem auto;
+        animation-duration: 8s;
+    }
+
+    /* Подпись меньше */
+    .gif-caption {
+        font-size: 0.8rem;
+        margin-top: 0.7rem;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    /* Ещё меньше заголовок */
+    h1 {
+        font-size: 1.4rem !important;
+    }
+
+    /* Навигация вертикально + компактно */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.8rem;
+    }
+
+    nav a {
+        width: 50%;
+        max-width: 280px;
+        text-align: center;
+        padding: 0.35rem 0.6rem !important;
+        font-size: 0.75rem !important;
+        margin: 0 !important;
+        border-radius: 4px;
+        white-space: normal; /* Разрешаем перенос, если текст длинный */
+        word-break: break-word;
+    }
+
+    /* Ещё меньше отступы в header */
+    header {
+        padding: 1rem 0 !important;
+    }
+
+    /* Гифка почти на всю ширину */
+    .gif-container {
+        max-width: 92%;
+        margin: 1rem auto;
+        animation-duration: 10s;
+    }
+
+    .gif-caption {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-6px);
+        }
+    }
+
+    /* Уменьшаем footer */
+    footer {
+        padding: 0.6rem 0 !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) — экстремальная компактность */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.2rem !important;
+    }
+
+    nav a {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.3rem !important;
+        width: 55%;
+    }
+
+    .gif-container {
+        max-width: 95%;
+        margin: 0.8rem auto;
+    }
+
+    .gif-caption {
+        font-size: 0.6rem;
+    }
+
+    header {
+        padding: 0.8rem 0 !important;
     }
 }
