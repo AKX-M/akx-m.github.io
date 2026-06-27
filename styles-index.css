@@ -86,11 +86,6 @@ main {
         font-size: 2rem;
     }
 
-    nav a {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
     .gif-container {
         max-width: 80%;
         margin: 1.5rem auto;
@@ -115,19 +110,6 @@ main {
 @media (max-width: 480px) {
     h1 {
         font-size: 1.5rem;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
-    nav a {
-        width: 80%;
-        text-align: center;
-        font-size: 0.8rem;
-        padding: 0.4rem 1rem;
     }
 
     .gif-container {
