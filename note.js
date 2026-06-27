@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Массив с названиями .md файлов
     const notes = [
         { file: 'запись-1.md' },
-        { file: 'запись-2.md' },
-        { file: 'определения.md' }
+        { file: 'запись-2.md' }
     ];
     
     // Функция загрузки .md файла
