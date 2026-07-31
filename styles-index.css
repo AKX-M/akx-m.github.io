@@ -17,6 +17,7 @@ body {
     padding: 0;
     color: #333;
     overflow-x: hidden;
+    cursor: url('images/cursor.svg') 16 16, auto;
 }
 
 /* Фон с параллакс-эффектом */
