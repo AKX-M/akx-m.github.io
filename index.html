@@ -20,14 +20,46 @@
     </header>
     
     <main>
-        <!-- Контейнер для гифки -->
-        <div class="gif-container">
-            <img src="images/logo-akx-m.svg" alt="Анимация АКХ" id="main-gif">
+        <div class="parallax-wrapper">
+            <div class="parallax-layer layer-back"></div>
+            <div class="parallax-layer layer-middle">
+                <div class="gif-container">
+                    <img src="images/logo-akx-m.svg" alt="Анимация АКХ" id="main-gif">
+                </div>
+            </div>
+            <div class="parallax-layer layer-front">
+                <p class="gif-caption">АКХ — творческое пространство</p>
+            </div>
         </div>
     </main>
     
     <footer>
         <p>© 2026 АКХ</p>
     </footer>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            document.querySelector('.layer-back').style.transform = `translate(${x * 20}px, ${y * 20}px) scale(1.1)`;
+            document.querySelector('.layer-middle').style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+            document.querySelector('.layer-front').style.transform = `translate(${x * 5}px, ${y * 5}px)`;
+        });
+
+        // Параллакс при скролле (опционально)
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const back = document.querySelector('.layer-back');
+            const middle = document.querySelector('.layer-middle');
+            
+            if (back) {
+                back.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
+            }
+            if (middle) {
+                middle.style.transform = `translateY(${scrollY * 0.1}px)`;
+            }
+        });
+    </script>
 </body>
 </html>
