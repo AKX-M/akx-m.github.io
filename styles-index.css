@@ -91,6 +91,7 @@ main {
 
 .layer-middle {
     z-index: 2;
+    pointer-events: auto; /* Чтобы клик по гифке работал */
 }
 
 .decor-image {
@@ -111,11 +112,21 @@ main {
     animation: float 6s ease-in-out infinite;
 }
 
+.gif-container a {
+    display: block;
+    cursor: pointer;
+}
+
 .gif-container img {
     width: 100%;
     height: auto;
     display: block;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gif-container img:hover {
+    transform: scale(1.05);
 }
 
 @keyframes float {
