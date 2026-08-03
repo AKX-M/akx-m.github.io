@@ -45,16 +45,6 @@
             document.querySelector('.layer-back').style.transform = `translate(${x * 25}px, ${y * 25}px)`;
             document.querySelector('.layer-middle').style.transform = `translate(${x * 0}px, ${y * 0}px)`;
         });
-
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            
-            // Параллакс для фона при скролле
-            document.body.style.setProperty('--bg-scroll', `${scrollY * 0.2}px`);
-            
-            document.querySelector('.layer-back').style.transform = `translateY(${scrollY * 0.3}px)`;
-            document.querySelector('.layer-middle').style.transform = `translateY(${scrollY * 0.0}px)`;
-        });
     </script>
 </body>
 </html>

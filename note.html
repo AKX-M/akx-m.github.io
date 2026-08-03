@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архив АКХ</title>
+    <title>Архив</title>
     <meta name="description" content="Архив АКХ">
     <link rel="stylesheet" href="styles-note.css">
     <!-- Подключаем Highlight.js для подсветки кода -->
@@ -46,5 +46,16 @@
     <!-- Подключаем marked.js для парсинга Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="note.js"></script>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            // Параллакс для фона
+            document.body.style.setProperty('--bg-x', `${x * 15}px`);
+            document.body.style.setProperty('--bg-y', `${y * 15}px`);
+        });
+    </script>
 </body>
 </html>
