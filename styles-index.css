@@ -149,7 +149,7 @@ main {
     }
 
     .decor-image {
-        max-width: 200px;
+        max-width: 950px;
     }
 }
 
@@ -164,8 +164,8 @@ main {
     }
 
     .decor-image {
-        max-width: 150px;
-        opacity: 0.2;
+        max-width: 450px;
+        opacity: 1.0;
     }
 }
 
