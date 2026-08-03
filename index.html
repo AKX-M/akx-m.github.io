@@ -6,107 +6,29 @@
     <title>АКХ</title>
     <meta name="description" content="АКХ">
     <link rel="stylesheet" href="styles-index.css">
-    <style>
-        /* Небольшие дополнения для спойлера, чтобы он вписывался в стиль */
-        .spoiler-nav {
-            margin-top: 10px;
-        }
-        .spoiler-nav summary {
-            cursor: pointer;
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            color: #fff;
-            transition: 0.3s;
-            list-style: none; /* убираем стандартный треугольник */
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .spoiler-nav summary:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        /* кастомный маркер — можно добавить псевдоэлемент, но оставим минимализм */
-        .spoiler-nav summary::-webkit-details-marker {
-            display: none;
-        }
-        .spoiler-nav summary::after {
-            content: " ▾";
-            font-size: 0.7rem;
-            opacity: 0.7;
-        }
-        .spoiler-nav[open] summary::after {
-            content: " ▴";
-        }
-        .spoiler-nav .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 14px;
-            padding: 10px 0;
-            align-items: center;
-        }
-        .spoiler-nav .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.2s;
-            letter-spacing: 0.5px;
-        }
-        .spoiler-nav .nav-links a:hover {
-            opacity: 0.7;
-            border-bottom-color: rgba(255, 255, 255, 0.3);
-        }
-        /* Адаптив — чтобы не разваливалось */
-        @media (min-width: 600px) {
-            .spoiler-nav .nav-links {
-                flex-direction: row;
-                gap: 30px;
-                justify-content: center;
-            }
-            .spoiler-nav .nav-links a {
-                border-bottom: none;
-                padding: 5px 10px;
-            }
-            .spoiler-nav .nav-links a:hover {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            }
-        }
-        /* Заголовок h1 остаётся слева, а спойлер справа (как было с навигацией) */
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .header-content h1 {
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="header-content">
             <h1>АКХ</h1>
-            <!-- Вместо навигации — спойлер с ссылками -->
-            <details class="spoiler-nav">
-                <summary>Меню</summary>
-                <div class="nav-links">
-                    <a href="gallery.html">Зарисовки АКХ</a>
-                    <a href="line.html">Строчки АКХ</a>
-                    <a href="note.html">Архив АКХ</a>
-                </div>
-            </details>
+            <nav>
+                <a href="gallery.html">Зарисовки АКХ</a>
+                <a href="line.html">Строчки АКХ</a>
+                <a href="note.html">Архив АКХ</a>
+            </nav>
         </div>
     </header>
     
     <main>
         <div class="parallax-wrapper">
-            <div class="parallax-layer layer-back"></div>
+            <!-- Задний слой с декоративной картинкой -->
+            <div class="parallax-layer layer-back">
+                <div class="decor-image">
+                    <img src="images/mig-23-bg.svg" alt="Декоративный фон">
+                </div>
+            </div>
+            
+            <!-- Средний слой с основной гифкой -->
             <div class="parallax-layer layer-middle">
                 <div class="gif-container">
                     <img src="images/logo-akx-m.svg" alt="Анимация АКХ" id="main-gif">
@@ -120,34 +42,19 @@
     </footer>
 
     <script>
-        // Параллакс от мыши (слой .layer-front отсутствует, поэтому убираем обращение к нему)
         document.addEventListener('mousemove', function(e) {
             const x = (e.clientX / window.innerWidth - 0.5) * 2;
             const y = (e.clientY / window.innerHeight - 0.5) * 2;
             
-            const back = document.querySelector('.layer-back');
-            const middle = document.querySelector('.layer-middle');
-            
-            if (back) {
-                back.style.transform = `translate(${x * 20}px, ${y * 20}px) scale(1.1)`;
-            }
-            if (middle) {
-                middle.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-            }
+            document.querySelector('.layer-back').style.transform = `translate(${x * 25}px, ${y * 25}px)`;
+            document.querySelector('.layer-middle').style.transform = `translate(${x * 0}px, ${y * 0}px)`;
         });
 
-        // Параллакс при скролле
         window.addEventListener('scroll', function() {
             const scrollY = window.scrollY;
-            const back = document.querySelector('.layer-back');
-            const middle = document.querySelector('.layer-middle');
             
-            if (back) {
-                back.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
-            }
-            if (middle) {
-                middle.style.transform = `translateY(${scrollY * 0.1}px)`;
-            }
+            document.querySelector('.layer-back').style.transform = `translateY(${scrollY * 0.3}px)`;
+            document.querySelector('.layer-middle').style.transform = `translateY(${scrollY * 0.0}px)`;
         });
     </script>
 </body>

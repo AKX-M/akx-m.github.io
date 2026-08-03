@@ -66,6 +66,8 @@ main {
 /* Базовый стиль для слоев */
 .parallax-layer {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -74,46 +76,37 @@ main {
     justify-content: center;
     transition: transform 0.1s ease-out;
     will-change: transform;
-}
-
-/* Задний слой — декоративные элементы */
-.layer-back {
-    z-index: 1;
     pointer-events: none;
 }
 
-.layer-back::before {
-    content: '';
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: pulseGlow 8s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.2); }
+/* Задний слой */
+.layer-back {
+    z-index: 1;
 }
 
 /* Средний слой — гифка */
 .layer-middle {
     z-index: 2;
-    pointer-events: none;
 }
 
-/* Передний слой — текст */
-.layer-front {
-    z-index: 3;
-    pointer-events: none;
+/* Контейнер для декоративной картинки на заднем слое */
+.decor-image {
+    max-width: 2400px;
+    width: 120%;
+    opacity: 1.0;
+}
+
+.decor-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Блюр убран */
 }
 
 /* Контейнер для гифки */
 .gif-container {
     max-width: 500px;
     width: 100%;
-    margin: 0 auto;
     animation: float 6s ease-in-out infinite;
 }
 
@@ -122,22 +115,6 @@ main {
     height: auto;
     display: block;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-}
-
-/* Подпись под гифкой */
-.gif-caption {
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 1.5rem;
-    font-style: italic;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
-    letter-spacing: 2px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.5rem 2rem;
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Анимация плавания */
@@ -152,87 +129,43 @@ main {
 
 /* ====== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ====== */
 
-/* Планшеты и телефоны */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-
     .parallax-wrapper {
         min-height: 400px;
     }
 
     .gif-container {
         max-width: 70%;
-        margin: 0 auto;
         animation-duration: 8s;
     }
-    
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px) scale(1);
-        }
-        50% {
-            transform: translateY(-10px) scale(1.01);
-        }
-    }
 
-    .gif-caption {
-        font-size: 0.9rem;
-        padding: 0.4rem 1.5rem;
-        margin-top: 1rem;
+    .decor-image {
+        max-width: 200px;
     }
 }
 
-/* Маленькие телефоны */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-
     .parallax-wrapper {
         min-height: 350px;
     }
 
     .gif-container {
         max-width: 85%;
-        margin: 0 auto;
         animation-duration: 10s;
     }
-    
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px) scale(1);
-        }
-        50% {
-            transform: translateY(-8px) scale(1);
-        }
-    }
 
-    .gif-caption {
-        font-size: 0.75rem;
-        padding: 0.3rem 1rem;
-        margin-top: 0.75rem;
-        letter-spacing: 1px;
-    }
-
-    .layer-back::before {
-        width: 150%;
-        height: 150%;
+    .decor-image {
+        max-width: 150px;
+        opacity: 0.2;
     }
 }
 
-/* Отключаем сложную анимацию на слабых устройствах */
 @media (prefers-reduced-motion: reduce) {
     .parallax-layer {
         transition: none !important;
     }
     
     .gif-container {
-        animation: none !important;
-    }
-    
-    .layer-back::before {
         animation: none !important;
     }
 }
