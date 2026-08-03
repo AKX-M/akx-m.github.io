@@ -16,23 +16,34 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    overflow-x: hidden;
+    cursor: url('images/cursor.svg') 16 16, auto;
+    /* Добавлены переменные для параллакса фона */
+    --bg-x: 0px;
+    --bg-y: 0px;
+    --bg-scroll: 0px;
 }
 
-/* Фон */
+/* Фон с параллакс-эффектом */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -5%;           /* Смещаем вверх */
+    left: -5%;          /* Смещаем влево */
+    width: 110%;         /* Увеличиваем ширину */
+    height: 110%;        /* Увеличиваем высоту */
+    background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     opacity: 1.0;
     z-index: -1;
+    transform: translate(var(--bg-x), var(--bg-y)) translateY(var(--bg-scroll));
+    transition: transform 0.1s ease-out;
+    will-change: transform;
 }
+
+/* ВСЁ ОСТАЛЬНОЕ БЕЗ ИЗМЕНЕНИЙ */
 
 main {
     flex: 1;
@@ -41,13 +52,62 @@ main {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
 }
 
-/* Контейнер для гифки */
-.gif-container {
-    max-width: 600px;
+.parallax-wrapper {
+    position: relative;
     width: 100%;
-    margin: 2rem auto;
+    max-width: 800px;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+    pointer-events: none;
+}
+
+.layer-back {
+    z-index: 1;
+}
+
+.layer-middle {
+    z-index: 2;
+}
+
+.decor-image {
+    max-width: 3000px;
+    width: 120%;
+    opacity: 1.0;
+}
+
+.decor-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gif-container {
+    max-width: 500px;
+    width: 100%;
     animation: float 6s ease-in-out infinite;
 }
 
@@ -55,80 +115,59 @@ main {
     width: 100%;
     height: auto;
     display: block;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
 }
 
-/* Подпись под гифкой */
-.gif-caption {
-    color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 1rem;
-    font-style: italic;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    letter-spacing: 1px;
-}
-
-/* Анимация плавания */
 @keyframes float {
     0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0px) scale(1);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-15px) scale(1.02);
     }
 }
 
-/* ====== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ====== */
-
-/* Планшеты и телефоны */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
+    .parallax-wrapper {
+        min-height: 400px;
     }
 
     .gif-container {
-        max-width: 80%;
-        margin: 1.5rem auto;
-        animation-duration: 8s; /* Медленнее на мобильных */
-    }
-    
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-10px); /* Меньше поднимается */
-        }
+        max-width: 70%;
+        animation-duration: 8s;
     }
 
-    .gif-caption {
-        font-size: 0.85rem;
+    .decor-image {
+        max-width: 200px;
     }
 }
 
-/* Маленькие телефоны */
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
+    .parallax-wrapper {
+        min-height: 350px;
     }
 
     .gif-container {
-        max-width: 95%;
-        margin: 1rem auto;
-        animation-duration: 10s; /* Ещё медленнее */
-    }
-    
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px);
-        }
-        50% {
-            transform: translateY(-8px); /* Ещё меньше поднимается */
-        }
+        max-width: 85%;
+        animation-duration: 10s;
     }
 
-    .gif-caption {
-        font-size: 0.75rem;
-        margin-top: 0.75rem;
+    .decor-image {
+        max-width: 150px;
+        opacity: 0.2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallax-layer {
+        transition: none !important;
+    }
+    
+    .gif-container {
+        animation: none !important;
+    }
+    
+    body::before {
+        transition: none !important;
     }
 }

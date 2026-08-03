@@ -14,20 +14,55 @@
             <nav>
                 <a href="gallery.html">Зарисовки АКХ</a>
                 <a href="line.html">Строчки АКХ</a>
-                <a href="note.html">Записи АКХ</a>
+                <a href="note.html">Архив АКХ</a>
             </nav>
         </div>
     </header>
     
     <main>
-        <!-- Контейнер для гифки -->
-        <div class="gif-container">
-            <img src="images/logo-akx-m.svg" alt="Анимация АКХ" id="main-gif">
+        <div class="parallax-wrapper">
+            <!-- Задний слой с декоративной картинкой -->
+            <div class="parallax-layer layer-back">
+                <div class="decor-image">
+                    <img src="images/mig-23-bg.svg" alt="Декоративный фон">
+                </div>
+            </div>
+            
+            <!-- Средний слой с основной гифкой -->
+            <div class="parallax-layer layer-middle">
+                <div class="gif-container">
+                    <img src="images/logo-akx-m.svg" alt="Анимация АКХ" id="main-gif">
+                </div>
+            </div>
         </div>
     </main>
     
     <footer>
         <p>© 2026 АКХ</p>
     </footer>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            // Параллакс для фона
+            document.body.style.setProperty('--bg-x', `${x * 15}px`);
+            document.body.style.setProperty('--bg-y', `${y * 15}px`);
+            
+            document.querySelector('.layer-back').style.transform = `translate(${x * 25}px, ${y * 25}px)`;
+            document.querySelector('.layer-middle').style.transform = `translate(${x * 0}px, ${y * 0}px)`;
+        });
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            
+            // Параллакс для фона при скролле
+            document.body.style.setProperty('--bg-scroll', `${scrollY * 0.2}px`);
+            
+            document.querySelector('.layer-back').style.transform = `translateY(${scrollY * 0.3}px)`;
+            document.querySelector('.layer-middle').style.transform = `translateY(${scrollY * 0.0}px)`;
+        });
+    </script>
 </body>
 </html>
