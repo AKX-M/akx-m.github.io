@@ -169,6 +169,7 @@ main {
     }
 }
 
+/*
 @media (prefers-reduced-motion: reduce) {
     .parallax-layer {
         transition: none !important;
@@ -182,3 +183,4 @@ main {
         transition: none !important;
     }
 }
+*/
