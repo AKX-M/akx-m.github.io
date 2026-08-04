@@ -15,36 +15,46 @@ body {
     --bg-scroll: 0px;
 }
 
-/* Скрываем стандартный курсор на всей странице */
-* {
-    cursor: none !important;
+/* Скрываем стандартный курсор только на десктопах */
+@media (hover: hover) and (pointer: fine) {
+    * {
+        cursor: none !important;
+    }
+    
+    .custom-cursor {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        pointer-events: none;
+        z-index: 9999;
+        background: url('images/mig-23-cursor.svg') no-repeat center;
+        background-size: contain;
+        transform: translate(-50%, -50%);
+        transition: transform 0.15s ease;
+        opacity: 0;
+        will-change: transform, left, top;
+    }
+    
+    body:hover .custom-cursor {
+        opacity: 1;
+    }
+    
+    a:hover ~ .custom-cursor,
+    button:hover ~ .custom-cursor,
+    [role="button"]:hover ~ .custom-cursor {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }
 
-/* Стили для кастомного курсора */
-.custom-cursor {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    pointer-events: none;  /* Чтобы курсор не мешал кликам */
-    z-index: 9999;
-    background: url('images/mig-23-cursor.svg') no-repeat center;
-    background-size: contain;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease;
-    opacity: 0;  /* Скрыт по умолчанию */
-    will-change: transform, left, top;
-}
-
-/* Показываем курсор только когда мышь на странице */
-body:hover .custom-cursor {
-    opacity: 1;
-}
-
-/* Для ссылок можно добавить эффект увеличения */
-a:hover ~ .custom-cursor,
-button:hover ~ .custom-cursor,
-[role="button"]:hover ~ .custom-cursor {
-    transform: translate(-50%, -50%) scale(1.2);
+/* На мобильных устройствах используем стандартный курсор */
+@media (hover: none), (pointer: coarse) {
+    * {
+        cursor: auto !important;
+    }
+    
+    .custom-cursor {
+        display: none !important;
+    }
 }
 
 main {
