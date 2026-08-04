@@ -17,7 +17,6 @@ body {
     padding: 0;
     color: #333;
     overflow-x: hidden;
-    cursor: url('images/mig-23-cursor.svg') 16 16, auto;
     /* Добавлены переменные для параллакса фона */
     --bg-x: 0px;
     --bg-y: 0px;
@@ -41,40 +40,6 @@ body::before {
     transform: translate(var(--bg-x), var(--bg-y)) translateY(var(--bg-scroll));
     transition: transform 0.1s ease-out;
     will-change: transform;
-}
-
-/* styles-index.css */
-
-/* Скрываем стандартный курсор на всей странице */
-* {
-    cursor: none !important;
-}
-
-/* Стили для кастомного курсора */
-.custom-cursor {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    pointer-events: none;  /* Чтобы курсор не мешал кликам */
-    z-index: 9999;
-    background: url('images/mig-23-cursor.svg') no-repeat center;
-    background-size: contain;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease;
-    opacity: 0;  /* Скрыт по умолчанию */
-    will-change: transform, left, top;
-}
-
-/* Показываем курсор только когда мышь на странице */
-body:hover .custom-cursor {
-    opacity: 1;
-}
-
-/* Для ссылок можно добавить эффект увеличения */
-a:hover ~ .custom-cursor,
-button:hover ~ .custom-cursor,
-[role="button"]:hover ~ .custom-cursor {
-    transform: translate(-50%, -50%) scale(1.2);
 }
 
 main {
