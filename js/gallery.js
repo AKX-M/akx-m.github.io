@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
             imgContainer.className = 'photo-container';
             
             const img = document.createElement('img');
-            img.src = `images/${filename}`;
+            img.src = `../images/${filename}`;
             img.alt = `Фотография ${index + 1}`;
             
             // ПРОСТОЕ РЕШЕНИЕ: при клике открыть фото в новой вкладке
             img.onclick = function() {
-                window.open(`images/${filename}`, '_blank');
+                window.open(`../images/${filename}`, '_blank');
             };
             
             // Добавляем курсор-указатель, чтобы было понятно, что можно нажать

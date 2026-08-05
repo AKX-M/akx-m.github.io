@@ -31,7 +31,7 @@ body::before {
     left: -5%;          /* Смещаем влево */
     width: 110%;         /* Увеличиваем ширину */
     height: 110%;        /* Увеличиваем высоту */
-    background-image: url('images/background.jpg');
+    background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

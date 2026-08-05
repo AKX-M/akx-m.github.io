@@ -27,7 +27,7 @@ body {
         height: 400px;
         pointer-events: none;
         z-index: 9999;
-        background: url('images/mig-23-cursor.svg') no-repeat center;
+        background: url('../images/mig-23-cursor.svg') no-repeat center;
         background-size: contain;
         transform: translate(-50%, -50%);
         transition: transform 0.15s ease;
@@ -69,7 +69,7 @@ body::before {
     left: -5%;
     width: 110%;
     height: 110%;
-    background-image: url('images/background.jpg');
+    background-image: url('../images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
