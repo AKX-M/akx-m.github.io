@@ -145,6 +145,10 @@ main {
         animation-duration: 8s;
     }
 
+    .parallax-layer {
+        transition: transform 0.05s linear; /* Добавляем плавность */
+    }
+
     .decor-image {
         max-width: 950px;
     }
@@ -165,7 +169,17 @@ main {
         opacity: 1.0;
     }
 }
-/**/
+
+.parallax-layer,
+.gif-container,
+.decor-image,
+.gif-container img {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
 /*
 @media (prefers-reduced-motion: reduce) {
     .parallax-layer {
