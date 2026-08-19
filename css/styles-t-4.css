@@ -104,7 +104,7 @@ main {
 }
 
 .gif-container {
-    max-width: 500px;
+    max-width: 1500px;
     width: 100%;
     animation: float 6s ease-in-out infinite;
 }
