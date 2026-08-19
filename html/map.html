@@ -5,14 +5,315 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карта сайта</title>
     <link rel="stylesheet" href="../css/styles-map.css">
+    <style>
+        /* Дополнительные стили для вертикальной полосы достижений */
+        
+        body {
+            position: relative;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .map-wrapper {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+            max-width: 1400px;
+            width: 100%;
+            height: 100%;
+            min-height: 70vh;
+            position: relative;
+        }
+
+        .map-container {
+            flex: 1;
+            position: relative;
+            min-height: 70vh;
+        }
+
+        /* Вертикальная полоса достижений на всю высоту экрана — стиль как у заголовка */
+        .achievements-side {
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 320px;
+            min-width: 280px;
+            background: rgba(0, 32, 70, 0.85);
+            padding: 6rem 1.8rem 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        .achievements-side h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin: 0 0 2rem 0;
+            padding: 0;
+            letter-spacing: 0.05em;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .achievements-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1rem;
+            color: #e8e8e8;
+            font-family: 'Arial', sans-serif;
+            padding: 0.6rem 0.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        /* Стили для ссылок внутри списка — переопределяем синий цвет */
+        .achievements-list li a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: #e8e8e8 !important; /* Принудительно переопределяем цвет */
+            width: 100%;
+            transition: color 0.2s;
+        }
+
+        .achievements-list li a:hover {
+            color: #ffffff !important;
+        }
+
+        .achievements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .achievements-list li:hover {
+            color: #ffffff;
+            transform: translateX(-4px);
+        }
+
+        .achievements-list .icon {
+            font-size: 1.4rem;
+            min-width: 2.2rem;
+            text-align: center;
+        }
+
+        .achievements-list .text {
+            line-height: 1.4;
+        }
+
+        .achievements-list .highlight {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        /* Оригинальные стили карточек из styles-map.css — без изменений */
+        .map-card {
+            position: absolute;
+            background: rgba(0, 32, 70, 0.7);
+            padding: 1.8rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 220px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            will-change: transform;
+            cursor: pointer;
+        }
+
+        .map-card:hover {
+            transform: scale(1.08) !important;
+            background: rgba(0, 50, 100, 0.85);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .map-icon {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .map-card h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: white;
+            margin: 0;
+        }
+
+        .float-1 {
+            top: 5%;
+            left: 5%;
+            animation: float1 7s ease-in-out infinite;
+        }
+
+        .float-2 {
+            top: 10%;
+            right: 48%;
+            animation: float2 9s ease-in-out infinite;
+        }
+
+        .float-3 {
+            top: 35%;
+            left: 12%;
+            animation: float3 8s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -20px) rotate(2deg); }
+            50% { transform: translate(-10px, 30px) rotate(-1deg); }
+            75% { transform: translate(20px, 10px) rotate(1.5deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            30% { transform: translate(-40px, -15px) rotate(-2deg); }
+            60% { transform: translate(15px, 25px) rotate(1.5deg); }
+            80% { transform: translate(-20px, -5px) rotate(-1deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(25px, 20px) rotate(2deg); }
+            50% { transform: translate(-30px, -25px) rotate(-2.5deg); }
+            70% { transform: translate(15px, -10px) rotate(1deg); }
+        }
+
+        .map-card {
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .float-1 { animation-delay: 0.1s; opacity: 0; animation: float1 7s ease-in-out infinite 0.1s, fadeIn 0.8s ease-out 0.1s forwards; }
+        .float-2 { animation-delay: 0.3s; opacity: 0; animation: float2 9s ease-in-out infinite 0.3s, fadeIn 0.8s ease-out 0.3s forwards; }
+        .float-3 { animation-delay: 0.5s; opacity: 0; animation: float3 8s ease-in-out infinite 0.5s, fadeIn 0.8s ease-out 0.5s forwards; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Адаптив */
+        @media (max-width: 1024px) {
+            .achievements-side {
+                width: 260px;
+                min-width: 220px;
+                padding: 5rem 1.2rem 1.5rem 1.2rem;
+            }
+            .achievements-side h2 {
+                font-size: 1.6rem;
+            }
+            .achievements-list li {
+                font-size: 0.9rem;
+            }
+            .map-card {
+                width: 180px;
+                padding: 1.4rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .achievements-side {
+                position: relative;
+                width: 100%;
+                min-width: unset;
+                padding: 1.5rem 1.2rem;
+                max-height: 400px;
+                overflow-y: auto;
+            }
+            .map-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                min-height: auto;
+            }
+            .map-container {
+                width: 100%;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 1rem 0;
+            }
+            .map-card {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 85%;
+                max-width: 300px;
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .achievements-side h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-card {
+                width: 95%;
+                padding: 1.5rem 1rem;
+            }
+            .map-card h2 {
+                font-size: 1rem;
+            }
+            .map-icon {
+                font-size: 2rem;
+            }
+            .achievements-side {
+                padding: 1.2rem 1rem;
+                max-height: 350px;
+            }
+            .achievements-side h2 {
+                font-size: 1.4rem;
+            }
+            .achievements-list li {
+                font-size: 0.85rem;
+            }
+            .achievements-list .icon {
+                font-size: 1.1rem;
+                min-width: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>
-                Привет лётной братии!
-            </h1>
-            <p> </p>
+            <h1>Привет лётной братии!</h1>
             <a href="../index.html" class="logo-link" title="Главная">
                 <img src="../images/logo-akx-m.svg" alt="АКХ" class="header-logo" width="200" height="auto">
             </a>
@@ -20,18 +321,37 @@
     </header>
 
     <main>
-        <div class="map-container">
-            <a href="../html/gallery.html" class="map-card float-1">
-                <h2>Зарисовки</h2>
-            </a>
-            <a href="../html/line.html" class="map-card float-2">
-                <h2>Строчки</h2>
-            </a>
-            <a href="../html/note.html" class="map-card float-3">
-                <h2>Архив</h2>
-            </a>
+        <div class="map-wrapper">
+            <!-- Левая часть: карточки-кнопки (оригинальные стили) -->
+            <div class="map-container">
+                <a href="../html/gallery.html" class="map-card float-1">
+                    <h2>Зарисовки</h2>
+                </a>
+                <a href="../html/line.html" class="map-card float-2">
+                    <h2>Строчки</h2>
+                </a>
+                <a href="../html/note.html" class="map-card float-3">
+                    <h2>Архив</h2>
+                </a>
+            </div>
         </div>
     </main>
+
+    <!-- Вертикальная полоса достижений на всю высоту экрана -->
+    <div class="achievements-side">
+        <ul class="achievements-list">
+            <li>
+                <a href="../html/su-25.html">
+                    <span class="text"> Су-25 «Грач» </span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/t-4.html">
+                    <span class="text"> Т-4 «Сотка» </span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
     <footer>
         <p>© 2026 АКХ</p>

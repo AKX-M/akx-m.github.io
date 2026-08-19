@@ -23,37 +23,6 @@ body {
     --bg-scroll: 0px;
 }
 
-/* Скрываем стандартный курсор только на десктопах */
-@media (hover: hover) and (pointer: fine) {
-    * {
-        cursor: none !important;
-    }
-    
-    .custom-cursor {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        pointer-events: none;
-        z-index: 9999;
-        background: url('../images/mig-23-cursor.svg') no-repeat center;
-        background-size: contain;
-        transform: translate(-50%, -50%);
-        transition: transform 0.15s ease;
-        opacity: 0;
-        will-change: transform, left, top;
-    }
-    
-    body:hover .custom-cursor {
-        opacity: 1;
-    }
-    
-    a:hover ~ .custom-cursor,
-    button:hover ~ .custom-cursor,
-    [role="button"]:hover ~ .custom-cursor {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-
 /* Фон с параллакс-эффектом */
 body::before {
     content: '';
@@ -62,7 +31,7 @@ body::before {
     left: -5%;          /* Смещаем влево */
     width: 110%;         /* Увеличиваем ширину */
     height: 110%;        /* Увеличиваем высоту */
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/background-t-4.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

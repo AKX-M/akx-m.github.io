@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'MiG-23-preview.jpg',
         'MiG-23.jpg',
         'Su-25-preview.jpg',
-        'Su-25.jpg',
+        'Su-25.svg',
         '279.jpg',
         'MiG-25PD.jpg',
         'MiG-25PD-full.jpg',
