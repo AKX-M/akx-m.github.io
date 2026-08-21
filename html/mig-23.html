@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МиГ-23</title>
+    <meta name="description" content="МиГ-23">
+    <link rel="stylesheet" href="../css/styles-mig-23.css">
+    <!-- Подключаем Highlight.js для подсветки кода -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <!-- Подключаем MathJax для формул -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+        
+        /* Дополнительные стили для контента под картинкой */
+        .content-wrapper {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-card {
+            background: rgba(0, 32, 70, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Стили для всех заголовков в Markdown */
+        .content-card h1 {
+            color: white;
+            font-size: 2.2rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-card h2 {
+            color: white;
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .content-card h4 {
+            color: #e8e8e8;
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .content-card h5,
+        .content-card h6 {
+            color: #e8e8e8;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-card p {
+            color: #e8e8e8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .content-card ul, 
+        .content-card ol {
+            color: #e8e8e8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            padding-left: 1.5rem;
+        }
+
+        .content-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content-card blockquote {
+            border-left: 4px solid #ffd700;
+            padding-left: 1.5rem;
+            color: #d0d0d0;
+            font-style: italic;
+            margin: 1.5rem 0;
+        }
+
+        .content-card code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #ffd700;
+        }
+
+        .content-card pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .content-card pre code {
+            background: none;
+            padding: 0;
+            color: #e8e8e8;
+        }
+
+        /* Стили для формул MathJax */
+        .content-card .math {
+            color: #ffffff;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+        }
+
+        .content-card .MathJax {
+            color: #ffffff !important;
+        }
+
+        /* Стили для изображений в контенте */
+        .content-card img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        /* Стили для таблиц */
+        .content-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            color: #e8e8e8;
+        }
+
+        .content-card table th,
+        .content-card table td {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1rem;
+            text-align: left;
+        }
+
+        .content-card table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .content-card {
+                padding: 1.5rem;
+            }
+            .content-card h1 {
+                font-size: 1.8rem;
+            }
+            .content-card h2 {
+                font-size: 1.5rem;
+            }
+            .content-card h3 {
+                font-size: 1.2rem;
+            }
+            .content-card p,
+            .content-card ul,
+            .content-card ol {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 1rem;
+            }
+            .content-card h1 {
+                font-size: 1.5rem;
+            }
+            .content-card h2 {
+                font-size: 1.3rem;
+            }
+            .content-card h3 {
+                font-size: 1.1rem;
+            }
+            .content-card p,
+            .content-card ul,
+            .content-card ol {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="../html/map.html" class="logo-link" title="Карта сайта">
+                <img src="../images/logo-akx-m.svg" alt="АКХ" class="header-logo" width="200" height="auto">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="parallax-wrapper">
+            <!-- Задний слой с декоративной картинкой -->
+            <div class="parallax-layer layer-back">
+                <div class="gif-container">
+                    <img src="../images/mig-23-bg.svg" alt="Декоративный фон">
+                </div>
+            </div>
+        </div>
+
+        <!-- Контент под картинкой -->
+        <div class="content-wrapper" id="content-container">
+            <!-- Контент будет загружаться сюда из .md файла -->
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2026 АКХ</p>
+    </footer>
+
+    <!-- Подключаем marked.js для парсинга Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Подключаем Highlight.js для подсветки кода -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const container = document.getElementById('content-container');
+            
+            // Функция загрузки .md файла
+            async function loadMarkdownFile(filename) {
+                try {
+                    const response = await fetch(filename);
+                    const text = await response.text();
+                    return text;
+                } catch (error) {
+                    console.error('Ошибка загрузки файла:', filename, error);
+                    return '# Ошибка загрузки\n\nНе удалось загрузить содержимое.';
+                }
+            }
+            
+            // Функция для отображения контента
+            async function displayContent() {
+                // Загружаем .md файл
+                const content = await loadMarkdownFile('../notes/МиГ-23.md');
+                
+                // Парсим Markdown в HTML
+                const parsedContent = marked.parse(content);
+                
+                // Создаем карточку и вставляем контент
+                const contentCard = document.createElement('div');
+                contentCard.className = 'content-card';
+                contentCard.innerHTML = parsedContent;
+                
+                container.appendChild(contentCard);
+                
+                // Подсветка кода
+                if (typeof hljs !== 'undefined') {
+                    document.querySelectorAll('pre code').forEach((block) => {
+                        hljs.highlightElement(block);
+                    });
+                }
+                
+                // Рендерим формулы MathJax
+                if (window.MathJax && MathJax.typesetPromise) {
+                    try {
+                        await MathJax.typesetPromise();
+                    } catch (err) {
+                        console.log('MathJax error:', err);
+                    }
+                }
+            }
+            
+            // Показываем контент
+            displayContent();
+        });
+    </script>
+    <script src="../js/parallax.js"></script>
+    <script src="../js/custom-cursor.js"></script>
+</body>
+</html>
